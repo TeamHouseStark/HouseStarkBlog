@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseStarkBlog.Data.Models"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseStarkBlog.Web", "HouseStarkBlog.Web\HouseStarkBlog.Web.csproj", "{CC33254E-6986-4A75-89CD-DBE325464AE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseStarkBlog.Data.Common", "HouseStarkBlog.Data.Common\HouseStarkBlog.Data.Common.csproj", "{4474618A-6A37-494F-BDC3-86BB3A3083E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CC33254E-6986-4A75-89CD-DBE325464AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC33254E-6986-4A75-89CD-DBE325464AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC33254E-6986-4A75-89CD-DBE325464AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4474618A-6A37-494F-BDC3-86BB3A3083E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4474618A-6A37-494F-BDC3-86BB3A3083E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4474618A-6A37-494F-BDC3-86BB3A3083E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4474618A-6A37-494F-BDC3-86BB3A3083E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +53,6 @@ Global
 		{C8E16FAE-2F23-473D-B0DA-9143342B0B3C} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
 		{F482F778-8484-49EA-82BC-1378770DB552} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
 		{CC33254E-6986-4A75-89CD-DBE325464AE1} = {42BF6180-24F8-492F-A10A-BBB1193631B5}
+		{4474618A-6A37-494F-BDC3-86BB3A3083E8} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
 	EndGlobalSection
 EndGlobal
