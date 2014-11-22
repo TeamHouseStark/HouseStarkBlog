@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(HouseStarkBlog.Web.Startup))]
-namespace HouseStarkBlog.Web
+[assembly: OwinStartupAttribute(typeof(HouseStarkBlog.Data.Startup))]
+namespace HouseStarkBlog.Data
 {
     public partial class Startup
     {

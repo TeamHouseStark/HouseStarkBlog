@@ -243,6 +243,11 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,6 +267,10 @@
     <ProjectReference Include="..\HouseStarkBlog.Data\HouseStarkBlog.Data.csproj">
       <Project>{c8e16fae-2f23-473d-b0da-9143342b0b3c}</Project>
       <Name>HouseStarkBlog.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HouseStarkBlog.Web.Api\HouseStarkBlog.Web.Api.csproj">
+      <Project>{8fcabc2b-85b0-45d7-ae86-b7ca4bdb4343}</Project>
+      <Name>HouseStarkBlog.Web.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace HouseStarkBlog.Web.Models
+﻿namespace HouseStarkBlog.Web.Models
 {
+
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

@@ -7,10 +7,10 @@ using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
-using HouseStarkBlog.Web.Models;
+using HouseStarkBlog.Data.Models;
 using HouseStarkBlog.Data;
 
-namespace HouseStarkBlog.Web
+namespace HouseStarkBlog.Data
 {
 
     using Data.Models;

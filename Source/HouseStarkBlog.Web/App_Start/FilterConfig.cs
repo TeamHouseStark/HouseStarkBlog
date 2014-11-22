@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace HouseStarkBlog.Web
+namespace HouseStarkBlog.Data
 {
     public class FilterConfig
     {

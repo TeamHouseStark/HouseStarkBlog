@@ -14,5 +14,7 @@
         {
             return new AppDbContext();
         }
+
+        public System.Data.Entity.DbSet<HouseStarkBlog.Data.Models.Post> Posts { get; set; }
     }
 }

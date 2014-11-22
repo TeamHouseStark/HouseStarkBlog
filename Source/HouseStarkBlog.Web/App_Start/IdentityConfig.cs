@@ -1,4 +1,4 @@
-﻿namespace HouseStarkBlog.Web
+﻿namespace HouseStarkBlog.Data
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
