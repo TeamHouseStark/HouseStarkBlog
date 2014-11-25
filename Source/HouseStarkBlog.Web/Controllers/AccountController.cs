@@ -1,11 +1,11 @@
 ﻿namespace HouseStarkBlog.Web.Controllers
 {
 
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
 
-    using Data;
     using Data.Models;
 
     using Microsoft.AspNet.Identity;
@@ -28,15 +28,13 @@
             this.UserManager = userManager;
         }
 
-        public ApplicationUserManager UserManager {
+        public ApplicationUserManager UserManager
+        {
             get
             {
                 return this.userManager ?? this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
-            private set
-            {
-                this.userManager = value;
-            }
+            private set { this.userManager = value; }
         }
 
         //
@@ -57,16 +55,13 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.UserManager.FindAsync(model.Email, model.Password);
+                User user = await this.UserManager.FindAsync(model.Email, model.Password);
                 if (user != null)
                 {
                     await this.SignInAsync(user, model.RememberMe);
                     return this.RedirectToLocal(returnUrl);
                 }
-                else
-                {
-                    this.ModelState.AddModelError("", "Invalid username or password.");
-                }
+                this.ModelState.AddModelError("", "Invalid username or password.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -90,11 +85,11 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new User() { UserName = model.Email, Email = model.Email };
+                var user = new User {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await this.SignInAsync(user, isPersistent: false);
+                    await this.SignInAsync(user, false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -104,10 +99,7 @@
 
                     return this.RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    this.AddErrors(result);
-                }
+                this.AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
@@ -119,7 +111,7 @@
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return this.View("Error");
             }
@@ -129,11 +121,8 @@
             {
                 return this.View("ConfirmEmail");
             }
-            else
-            {
-                this.AddErrors(result);
-                return this.View();
-            }
+            this.AddErrors(result);
+            return this.View();
         }
 
         //
@@ -153,7 +142,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.UserManager.FindByNameAsync(model.Email);
+                User user = await this.UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await this.UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     this.ModelState.AddModelError("", "The user either does not exist or is not confirmed.");
@@ -179,13 +168,13 @@
         {
             return this.View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return this.View("Error");
             }
@@ -201,7 +190,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = await this.UserManager.FindByNameAsync(model.Email);
+                User user = await this.UserManager.FindByNameAsync(model.Email);
                 if (user == null)
                 {
                     this.ModelState.AddModelError("", "No user found.");
@@ -212,11 +201,8 @@
                 {
                     return this.RedirectToAction("ResetPasswordConfirmation", "Account");
                 }
-                else
-                {
-                    this.AddErrors(result);
-                    return this.View();
-                }
+                this.AddErrors(result);
+                return this.View();
             }
 
             // If we got this far, something failed, redisplay form
@@ -238,18 +224,21 @@
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
-            IdentityResult result = await this.UserManager.RemoveLoginAsync(this.User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            IdentityResult result =
+                await
+                    this.UserManager.RemoveLoginAsync(this.User.Identity.GetUserId(),
+                        new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                var user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
-                await this.SignInAsync(user, isPersistent: false);
+                User user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                await this.SignInAsync(user, false);
                 message = ManageMessageId.RemoveLoginSuccess;
             }
             else
             {
                 message = ManageMessageId.Error;
             }
-            return this.RedirectToAction("Manage", new { Message = message });
+            return this.RedirectToAction("Manage", new {Message = message});
         }
 
         //
@@ -257,11 +246,15 @@
         public ActionResult Manage(ManageMessageId? message)
         {
             this.ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : "";
+                message == ManageMessageId.ChangePasswordSuccess
+                    ? "Your password has been changed."
+                    : message == ManageMessageId.SetPasswordSuccess
+                        ? "Your password has been set."
+                        : message == ManageMessageId.RemoveLoginSuccess
+                            ? "The external login was removed."
+                            : message == ManageMessageId.Error
+                                ? "An error has occurred."
+                                : "";
             this.ViewBag.HasLocalPassword = this.HasPassword();
             this.ViewBag.ReturnUrl = this.Url.Action("Manage");
             return this.View();
@@ -280,17 +273,17 @@
             {
                 if (this.ModelState.IsValid)
                 {
-                    IdentityResult result = await this.UserManager.ChangePasswordAsync(this.User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                    IdentityResult result =
+                        await
+                            this.UserManager.ChangePasswordAsync(this.User.Identity.GetUserId(), model.OldPassword,
+                                model.NewPassword);
                     if (result.Succeeded)
                     {
-                        var user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
-                        await this.SignInAsync(user, isPersistent: false);
-                        return this.RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        User user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                        await this.SignInAsync(user, false);
+                        return this.RedirectToAction("Manage", new {Message = ManageMessageId.ChangePasswordSuccess});
                     }
-                    else
-                    {
-                        this.AddErrors(result);
-                    }
+                    this.AddErrors(result);
                 }
             }
             else
@@ -304,15 +297,13 @@
 
                 if (this.ModelState.IsValid)
                 {
-                    IdentityResult result = await this.UserManager.AddPasswordAsync(this.User.Identity.GetUserId(), model.NewPassword);
+                    IdentityResult result =
+                        await this.UserManager.AddPasswordAsync(this.User.Identity.GetUserId(), model.NewPassword);
                     if (result.Succeeded)
                     {
-                        return this.RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                        return this.RedirectToAction("Manage", new {Message = ManageMessageId.SetPasswordSuccess});
                     }
-                    else
-                    {
-                        this.AddErrors(result);
-                    }
+                    this.AddErrors(result);
                 }
             }
 
@@ -328,7 +319,8 @@
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, this.Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider,
+                this.Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
         //
@@ -336,26 +328,24 @@
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            var loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync();
+            ExternalLoginInfo loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
                 return this.RedirectToAction("Login");
             }
 
             // Sign in the user with this external login provider if the user already has a login
-            var user = await this.UserManager.FindAsync(loginInfo.Login);
+            User user = await this.UserManager.FindAsync(loginInfo.Login);
             if (user != null)
             {
-                await this.SignInAsync(user, isPersistent: false);
+                await this.SignInAsync(user, false);
                 return this.RedirectToLocal(returnUrl);
             }
-            else
-            {
-                // If the user does not have an account, then prompt the user to create an account
-                this.ViewBag.ReturnUrl = returnUrl;
-                this.ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return this.View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
-            }
+            // If the user does not have an account, then prompt the user to create an account
+            this.ViewBag.ReturnUrl = returnUrl;
+            this.ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+            return this.View("ExternalLoginConfirmation",
+                new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
         }
 
         //
@@ -365,24 +355,27 @@
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
-            return new ChallengeResult(provider, this.Url.Action("LinkLoginCallback", "Account"), this.User.Identity.GetUserId());
+            return new ChallengeResult(provider, this.Url.Action("LinkLoginCallback", "Account"),
+                this.User.Identity.GetUserId());
         }
 
         //
         // GET: /Account/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
-            var loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, this.User.Identity.GetUserId());
+            ExternalLoginInfo loginInfo =
+                await this.AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, this.User.Identity.GetUserId());
             if (loginInfo == null)
             {
-                return this.RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+                return this.RedirectToAction("Manage", new {Message = ManageMessageId.Error});
             }
-            IdentityResult result = await this.UserManager.AddLoginAsync(this.User.Identity.GetUserId(), loginInfo.Login);
+            IdentityResult result =
+                await this.UserManager.AddLoginAsync(this.User.Identity.GetUserId(), loginInfo.Login);
             if (result.Succeeded)
             {
                 return this.RedirectToAction("Manage");
             }
-            return this.RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+            return this.RedirectToAction("Manage", new {Message = ManageMessageId.Error});
         }
 
         //
@@ -390,7 +383,8 @@
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
+            string returnUrl)
         {
             if (this.User.Identity.IsAuthenticated)
             {
@@ -400,26 +394,26 @@
             if (this.ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
-                var info = await this.AuthenticationManager.GetExternalLoginInfoAsync();
+                ExternalLoginInfo info = await this.AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
                     return this.View("ExternalLoginFailure");
                 }
-                var user = new User() { UserName = model.Email, Email = model.Email };
+                var user = new User {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await this.UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await this.SignInAsync(user, isPersistent: false);
-                        
+                        await this.SignInAsync(user, false);
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-                        
+
                         return this.RedirectToLocal(returnUrl);
                     }
                 }
@@ -451,9 +445,9 @@
         [ChildActionOnly]
         public ActionResult RemoveAccountList()
         {
-            var linkedAccounts = this.UserManager.GetLogins(this.User.Identity.GetUserId());
+            IList<UserLoginInfo> linkedAccounts = this.UserManager.GetLogins(this.User.Identity.GetUserId());
             this.ViewBag.ShowRemoveButton = this.HasPassword() || linkedAccounts.Count > 1;
-            return (ActionResult)this.PartialView("_RemoveAccountPartial", linkedAccounts);
+            return this.PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
         protected override void Dispose(bool disposing)
@@ -467,26 +461,33 @@
         }
 
         #region Helpers
+
         // Used for XSRF protection when adding external logins
+        public enum ManageMessageId
+        {
+            ChangePasswordSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess,
+            Error
+        }
+
         private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
         {
-            get
-            {
-                return this.HttpContext.GetOwinContext().Authentication;
-            }
+            get { return this.HttpContext.GetOwinContext().Authentication; }
         }
 
         private async Task SignInAsync(User user, bool isPersistent)
         {
             this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            this.AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(this.UserManager));
+            this.AuthenticationManager.SignIn(new AuthenticationProperties {IsPersistent = isPersistent},
+                await user.GenerateUserIdentityAsync(this.UserManager));
         }
 
         private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors)
+            foreach (string error in result.Errors)
             {
                 this.ModelState.AddModelError("", error);
             }
@@ -494,7 +495,7 @@
 
         private bool HasPassword()
         {
-            var user = this.UserManager.FindById(this.User.Identity.GetUserId());
+            User user = this.UserManager.FindById(this.User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PasswordHash != null;
@@ -507,24 +508,13 @@
             // For information on sending mail, please visit http://go.microsoft.com/fwlink/?LinkID=320771
         }
 
-        public enum ManageMessageId
-        {
-            ChangePasswordSuccess,
-            SetPasswordSuccess,
-            RemoveLoginSuccess,
-            Error
-        }
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (this.Url.IsLocalUrl(returnUrl))
             {
                 return this.Redirect(returnUrl);
             }
-            else
-            {
-                return this.RedirectToAction("Index", "Home");
-            }
+            return this.RedirectToAction("Index", "Home");
         }
 
         private class ChallengeResult : HttpUnauthorizedResult
@@ -541,12 +531,14 @@
             }
 
             public string LoginProvider { get; set; }
+
             public string RedirectUri { get; set; }
+
             public string UserId { get; set; }
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties() { RedirectUri = this.RedirectUri };
+                var properties = new AuthenticationProperties {RedirectUri = this.RedirectUri};
                 if (this.UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = this.UserId;
@@ -554,6 +546,8 @@
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, this.LoginProvider);
             }
         }
+
         #endregion
     }
+
 }

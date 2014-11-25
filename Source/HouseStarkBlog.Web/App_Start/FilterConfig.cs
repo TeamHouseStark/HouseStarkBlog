@@ -1,8 +1,8 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-namespace HouseStarkBlog.Data
+﻿namespace HouseStarkBlog.Web
 {
+
+    using System.Web.Mvc;
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -10,4 +10,5 @@ namespace HouseStarkBlog.Data
             filters.Add(new HandleErrorAttribute());
         }
     }
+
 }

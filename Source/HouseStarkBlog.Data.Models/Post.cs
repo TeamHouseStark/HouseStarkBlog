@@ -31,6 +31,6 @@
         public IEnumerable<Tag> Tags { get; set; }
 
         public IEnumerable<Comment> Comments { get; set; }
-
     }
+
 }

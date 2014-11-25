@@ -1,9 +1,10 @@
-using System;
-
 namespace HouseStarkBlog.Web.Api.Areas.HelpPage.ModelDescriptions
 {
+
+    using System;
+
     /// <summary>
-    /// Describes a type model.
+    ///     Describes a type model.
     /// </summary>
     public abstract class ModelDescription
     {
@@ -13,4 +14,5 @@ namespace HouseStarkBlog.Web.Api.Areas.HelpPage.ModelDescriptions
 
         public string Name { get; set; }
     }
+
 }

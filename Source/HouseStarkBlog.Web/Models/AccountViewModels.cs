@@ -14,6 +14,7 @@
     public class ExternalLoginListViewModel
     {
         public string Action { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 
@@ -99,4 +100,5 @@
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
 }

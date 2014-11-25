@@ -1,5 +1,6 @@
 namespace HouseStarkBlog.Web.Api.Areas.HelpPage.ModelDescriptions
 {
+
     public class EnumValueDescription
     {
         public string Documentation { get; set; }
@@ -8,4 +9,5 @@ namespace HouseStarkBlog.Web.Api.Areas.HelpPage.ModelDescriptions
 
         public string Value { get; set; }
     }
+
 }

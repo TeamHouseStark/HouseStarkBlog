@@ -14,4 +14,5 @@
 
         public IEnumerable<Post> Posts { get; set; }
     }
+
 }

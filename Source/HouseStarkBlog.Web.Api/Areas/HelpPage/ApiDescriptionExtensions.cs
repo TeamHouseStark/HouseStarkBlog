@@ -1,16 +1,18 @@
-using System;
-using System.Text;
-using System.Web;
-using System.Web.Http.Description;
-
 namespace HouseStarkBlog.Web.Api.Areas.HelpPage
 {
+
+    using System;
+    using System.Text;
+    using System.Web;
+    using System.Web.Http.Description;
+
     public static class ApiDescriptionExtensions
     {
         /// <summary>
-        /// Generates an URI-friendly ID for the <see cref="ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+        ///     Generates an URI-friendly ID for the <see cref="ApiDescription" />. E.g. "Get-Values-id_name" instead of
+        ///     "GetValues/{id}?name={name}"
         /// </summary>
-        /// <param name="description">The <see cref="ApiDescription"/>.</param>
+        /// <param name="description">The <see cref="ApiDescription" />.</param>
         /// <returns>The ID as a string.</returns>
         public static string GetFriendlyId(this ApiDescription description)
         {
@@ -25,7 +27,7 @@ namespace HouseStarkBlog.Web.Api.Areas.HelpPage
                 queryKeyString = String.Join("_", queryKeys);
             }
 
-            StringBuilder friendlyPath = new StringBuilder();
+            var friendlyPath = new StringBuilder();
             friendlyPath.AppendFormat("{0}-{1}",
                 description.HttpMethod.Method,
                 localPath.Replace("/", "-").Replace("{", String.Empty).Replace("}", String.Empty));
@@ -36,4 +38,5 @@ namespace HouseStarkBlog.Web.Api.Areas.HelpPage
             return friendlyPath.ToString();
         }
     }
+
 }

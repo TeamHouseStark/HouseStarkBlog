@@ -1,20 +1,18 @@
 namespace HouseStarkBlog.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HouseStarkBlog.Data.AppDbContext>
+    using System.Data.Entity.Migrations;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<AppDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "HouseStarkBlog.Data.AppDbContext";
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
+            this.ContextKey = "HouseStarkBlog.Data.AppDbContext";
         }
 
-        protected override void Seed(HouseStarkBlog.Data.AppDbContext context)
+        protected override void Seed(AppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -30,4 +28,5 @@ namespace HouseStarkBlog.Data.Migrations
             //
         }
     }
+
 }

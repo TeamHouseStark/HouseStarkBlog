@@ -22,4 +22,5 @@
 
         public DateTime UpdatedOn { get; set; }
     }
+
 }
