@@ -4,27 +4,25 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Tag
+    public class Category
     {
         private ICollection<Post> posts;
 
-        public Tag()
+        public Category()
         {
             this.posts = new HashSet<Post>();
         }
+
         public virtual ICollection<Post> Posts
         {
-            get { return posts; }
-            set { posts = value; }
+            get { return this.posts; }
+            set { this.posts = value; }
         }
 
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
-        public int Count { get; set; }
-        
     }
 }

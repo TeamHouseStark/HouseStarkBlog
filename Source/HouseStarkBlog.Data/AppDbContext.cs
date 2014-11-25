@@ -5,6 +5,8 @@
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
+    using Migrations;
+
     using Models;
 
     public class AppDbContext : IdentityDbContext<User>
@@ -12,9 +14,16 @@
         public AppDbContext()
             : base("DefaultConnection", false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
 
         public static AppDbContext Create()
         {

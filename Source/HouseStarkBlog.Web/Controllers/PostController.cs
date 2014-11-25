@@ -1,13 +1,36 @@
 ﻿namespace HouseStarkBlog.Web.Controllers
 {
+
+    using System.IO;
+    using System.Net;
     using System.Web.Mvc;
+
+    using Data.Models;
 
     public class PostController : Controller
     {
+
         // GET: Post
-        public ActionResult Index()
+
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+        public string Index()
         {
-            return View();
+            WebRequest request = WebRequest.Create("http://localhost:6859/api/Posts");
+            request.Method = "GET";
+
+            var response = request.GetResponse();
+            var stream = response.GetResponseStream();
+            string result = string.Empty;
+            if (stream != null)
+            {
+                var reader = new StreamReader(stream);
+                result = reader.ReadToEnd();
+            }
+
+            return result;
         }
 
         // GET: Post/Details/5

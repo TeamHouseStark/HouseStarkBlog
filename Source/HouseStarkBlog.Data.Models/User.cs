@@ -1,6 +1,7 @@
 ﻿namespace HouseStarkBlog.Data.Models
 {
 
+    using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@
 
     public class User : IdentityUser
     {
+        public User()
+        {
+            this.Posts = new HashSet<Post>();
+        }
+
+        public ICollection<Post> Posts { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

@@ -1,24 +1,32 @@
 ﻿namespace HouseStarkBlog.Web.Api.Controllers
 {
 
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Text;
     using System.Web.Http;
     using System.Web.Http.Description;
+    using System.Web.Http.Results;
+    using System.Web.Mvc;
 
     using Data;
     using Data.Models;
+
+    using Newtonsoft.Json;
+
+    using Ninject.Infrastructure.Language;
 
     public class PostsController : ApiController
     {
         private readonly AppDbContext db = new AppDbContext();
 
         // GET: api/Posts
-        public IQueryable<Post> GetPosts()
+        public JsonResult<IEnumerable<Post>> GetPosts()
         {
-            return this.db.Posts;
+            return Json(this.db.Posts.ToEnumerable(), new JsonSerializerSettings());
         }
 
         // GET: api/Posts/5
