@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using Newtonsoft.Json;
+
+    [JsonObject(IsReference=true)]
     public class Category
     {
         private ICollection<Post> posts;
