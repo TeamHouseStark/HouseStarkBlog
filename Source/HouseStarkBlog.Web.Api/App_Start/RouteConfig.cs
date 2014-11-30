@@ -10,10 +10,13 @@
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("TopPosts", "{controller}/{action}",
+                new { controller = "Posts", action = "GetTopPosts" },
+                new[] { "HouseStarkBlog.Web.Api.Controllers" });
+
             routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
-                new[] {"HouseStarkBlog.Web.Api.Controllers"}
-                );
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "HouseStarkBlog.Web.Api.Controllers" });
         }
     }
 

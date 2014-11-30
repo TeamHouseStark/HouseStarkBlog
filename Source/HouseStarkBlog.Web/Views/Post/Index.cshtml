@@ -1,0 +1,10 @@
+﻿@model IEnumerable<HouseStarkBlog.Data.Models.Post>
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@foreach (var post in Model)
+{
+    <h1>@post.Title</h1>
+}

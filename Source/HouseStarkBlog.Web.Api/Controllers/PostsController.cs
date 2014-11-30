@@ -1,37 +1,50 @@
 ﻿namespace HouseStarkBlog.Web.Api.Controllers
 {
 
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
     using System.Web.Http;
     using System.Web.Http.Description;
+    using System.Web.Http.Results;
 
     using Data;
     using Data.Models;
 
+    using Newtonsoft.Json;
+
+    using Ninject.Infrastructure.Language;
+
     public class PostsController : ApiController
     {
         private readonly AppDbContext db = new AppDbContext();
+        private const int TopPostsLimit = 10;
 
         // GET: api/Posts
-        public IQueryable<Post> GetPosts()
+        public JsonResult<IEnumerable<Post>> GetPosts()
         {
-            return this.db.Posts;
+            return Json(this.db.Posts.ToEnumerable(), new JsonSerializerSettings());
         }
 
-        // GET: api/Posts/5
+        [HttpGet]
+        [ActionName("TopPosts")]
+        public JsonResult<IEnumerable<Post>> GetTopPosts()
+        {
+            var posts = this.db.Posts.ToList();
+            //TODO change select criteria to createdOn date when implemented
+            var topPosts = posts.OrderByDescending(p => p.Id).Take(TopPostsLimit).ToEnumerable();
+            return Json(topPosts, new JsonSerializerSettings());
+        }
+
+            // GET: api/Posts/5
         [ResponseType(typeof (Post))]
-        public IHttpActionResult GetPost(int id)
+        public JsonResult<Post> GetPost(int id)
         {
             Post post = this.db.Posts.Find(id);
-            if (post == null)
-            {
-                return this.NotFound();
-            }
 
-            return this.Ok(post);
+            return Json(post, new JsonSerializerSettings());
         }
 
         // PUT: api/Posts/5

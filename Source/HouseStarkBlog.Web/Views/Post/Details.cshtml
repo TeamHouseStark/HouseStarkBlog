@@ -1,0 +1,16 @@
+﻿@model HouseStarkBlog.Data.Models.Post
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1>@Model.Title</h1>
+
+<div>
+    <p>@Model.Content</p>
+</div>
+
+<p class="btn btn-sm btn-danger">@Model.Author.UserName</p>
+
+
+<script> var a = 1;</script>

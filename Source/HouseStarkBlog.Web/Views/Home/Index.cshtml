@@ -29,3 +29,38 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<button onclick="createCategory()">Create Category</button>
+<input type="number" id="categoryId" placeholder="Category ID" />
+<input type="text" id="categoryValue" placeholder="Category Title" />
+<button onclick="editCategory()">Edit Category</button>
+<button onclick="deleteCategory()">Delete Category</button>
+<script>
+    function createCategory() {
+        var title = 'Category ' + new Date().getSeconds();
+        $.ajax({
+            url: 'http://localhost:6859/api/Category',
+            method: 'POST',
+            data: { Title: title }
+        });
+    }
+
+    function editCategory() {
+        var id = $('#categoryId').val();
+        var title = $('#categoryValue').val();
+
+        $.ajax({
+            url: 'http://localhost:6859/api/Category/' + id,
+            method: 'PUT',
+            data: { Id: id, Title: title }
+        });
+    }
+
+    function deleteCategory() {
+        var id = $('#categoryId').val();
+        $.ajax({
+            url: 'http://localhost:6859/api/Category/' + id,
+            method: 'DELETE'
+        });
+    }
+
+</script>
