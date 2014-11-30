@@ -1,0 +1,11 @@
+﻿.jumbotron{
+    margin: 20px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sidebar-item {
+    margin-left: 154px;
+}
