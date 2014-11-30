@@ -21,7 +21,7 @@
         //}
         public ActionResult Index()
         {
-            WebRequest request = WebRequest.Create("http://localhost:6859/api/Posts");
+            WebRequest request = WebRequest.Create("http://localhost:6859/api/Posts/GetPosts");
             request.Method = "GET";
 
             var response = request.GetResponse();
