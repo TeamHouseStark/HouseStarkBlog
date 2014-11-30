@@ -20,7 +20,7 @@
 
     using ViewModels;
 
-    [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*", SupportsCredentials = true)]
     public class CategoryController : ApiController
     {
         private AppDbContext db = new AppDbContext();
@@ -33,6 +33,7 @@
 
         // GET: api/Category/5
         [ResponseType(typeof(Category))]
+        [Authorize]
         public JsonResult<CategoryViewModel> GetCategory(int id)
         {
             Category category = db.Categories.Find(id);

@@ -1,9 +1,7 @@
 using HouseStarkBlog.Web.Api;
 
-using WebActivatorEx;
-
-[assembly: PreApplicationStartMethod(typeof (NinjectWebCommon), "Start")]
-[assembly: ApplicationShutdownMethod(typeof (NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 
 namespace HouseStarkBlog.Web.Api
 {
@@ -19,30 +17,30 @@ namespace HouseStarkBlog.Web.Api
     using Ninject;
     using Ninject.Web.Common;
 
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
-        ///     Starts the application
+        /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
-            DynamicModuleUtility.RegisterModule(typeof (OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof (NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+            Bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
-        ///     Stops the application.
+        /// Stops the application.
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
-        ///     Creates the kernel that will manage your application.
+        /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
@@ -64,13 +62,12 @@ namespace HouseStarkBlog.Web.Api
         }
 
         /// <summary>
-        ///     Load your modules or register your services here!
+        /// Load your modules or register your services here!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<AppDbContext>();
-        }
+        }        
     }
-
 }
