@@ -16,7 +16,10 @@
     using Newtonsoft.Json;
 
     using Ninject.Infrastructure.Language;
+    using System.Web.Http.Cors;
+    using System.Web.Services;
 
+    [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*", SupportsCredentials = true)]
     public class PostsController : ApiController
     {
         private readonly AppDbContext db = new AppDbContext();
@@ -26,16 +29,6 @@
         public JsonResult<IEnumerable<Post>> GetPosts()
         {
             return Json(this.db.Posts.ToEnumerable(), new JsonSerializerSettings());
-        }
-
-        [HttpGet]
-        [ActionName("TopPosts")]
-        public JsonResult<IEnumerable<Post>> GetTopPosts()
-        {
-            var posts = this.db.Posts.ToList();
-            //TODO change select criteria to createdOn date when implemented
-            var topPosts = posts.OrderByDescending(p => p.Id).Take(TopPostsLimit).ToEnumerable();
-            return Json(topPosts, new JsonSerializerSettings());
         }
 
             // GET: api/Posts/5

@@ -18,27 +18,25 @@
 
     using Ninject.Infrastructure.Language;
 
-    using ViewModels;
-
     [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*", SupportsCredentials = true)]
     public class CategoryController : ApiController
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: api/Category
-        public JsonResult<IEnumerable<CategoryViewModel>> GetCategories()
+        public JsonResult<IEnumerable<Category>> GetCategories()
         {
-            return Json(this.db.Categories.Select(c => new CategoryViewModel() {Id = c.Id, Title = c.Title}).ToEnumerable(), new JsonSerializerSettings());
+            return Json(this.db.Categories.ToEnumerable(), new JsonSerializerSettings());
         }
 
         // GET: api/Category/5
         [ResponseType(typeof(Category))]
         [Authorize]
-        public JsonResult<CategoryViewModel> GetCategory(int id)
+        public JsonResult<Category> GetCategory(int id)
         {
             Category category = db.Categories.Find(id);
 
-            return Json(new CategoryViewModel() {Id = category.Id, Title = category.Title}, new JsonSerializerSettings());
+            return Json(category, new JsonSerializerSettings());
         }
 
         // PUT: api/Category/5

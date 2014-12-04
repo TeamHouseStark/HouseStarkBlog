@@ -5,8 +5,11 @@
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.Serialization;
 
+    using Interfaces;
+    using System;
+
     [DataContract(IsReference = true)]
-    public class Post
+    public class Post : IAuditInfo
     {
         private ICollection<Comment> comments;
         private ICollection<Tag> tags;
@@ -55,8 +58,14 @@
 
         
         public virtual User User { get; set; }
-        
 
+        [DataMember]
+        public DateTime CreatedOn { get; set; }
+
+        [DataMember]
+        public DateTime ModifiedOn { get; set; }
+
+        public bool PreserveCreatedOn { get; set; }
     }
 
 }

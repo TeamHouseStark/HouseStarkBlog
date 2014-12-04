@@ -13,8 +13,7 @@
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute("TopPostsApi", "api/{controller}/{action}");
-            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}/{id}", new {id = RouteParameter.Optional});
+            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new {id = RouteParameter.Optional});
         }
     }
 

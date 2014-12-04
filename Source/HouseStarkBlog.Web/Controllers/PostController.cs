@@ -1,41 +1,15 @@
 ﻿namespace HouseStarkBlog.Web.Controllers
 {
-
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Net;
     using System.Web.Mvc;
 
     using Data.Models;
 
-    using Newtonsoft.Json;
-
     public class PostController : Controller
     {
 
-        // GET: Post
-
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
         public ActionResult Index()
         {
-            WebRequest request = WebRequest.Create("http://localhost:6859/api/Posts");
-            request.Method = "GET";
-
-            var response = request.GetResponse();
-            var stream = response.GetResponseStream();
-            string result = string.Empty;
-            if (stream != null)
-            {
-                var reader = new StreamReader(stream);
-                result = reader.ReadToEnd();
-            }
-
-            var posts = JsonConvert.DeserializeObject<IEnumerable<Post>>(result);
-
-            return this.View(posts);
+            return this.View();
         }
 
         // GET: Post/Details/5
