@@ -50,10 +50,7 @@
 
                 if (entry.State == EntityState.Added)
                 {
-                    if (!entity.PreserveCreatedOn)
-                    {
-                        entity.CreatedOn = DateTime.Now;
-                    }
+                    entity.CreatedOn = DateTime.Now;
                 }
                 else
                 {

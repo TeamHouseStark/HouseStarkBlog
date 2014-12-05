@@ -5,9 +5,7 @@ namespace HouseStarkBlog.Data.Models.Interfaces
     {
         DateTime CreatedOn { get; set; }
 
-        DateTime ModifiedOn { get; set; }
-
-        bool PreserveCreatedOn { get; set; }
+        DateTime? ModifiedOn { get; set; }
 
     }
 }

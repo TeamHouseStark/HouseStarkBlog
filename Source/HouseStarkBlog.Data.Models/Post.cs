@@ -3,6 +3,7 @@
 
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Runtime.Serialization;
 
     using Interfaces;
@@ -63,9 +64,7 @@
         public DateTime CreatedOn { get; set; }
 
         [DataMember]
-        public DateTime ModifiedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
     }
 
 }

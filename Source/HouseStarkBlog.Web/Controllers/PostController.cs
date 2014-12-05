@@ -70,6 +70,7 @@
         }
 
         // GET: Post/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();

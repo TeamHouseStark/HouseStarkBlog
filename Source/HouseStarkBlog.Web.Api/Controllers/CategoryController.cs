@@ -31,7 +31,6 @@
 
         // GET: api/Category/5
         [ResponseType(typeof(Category))]
-        [Authorize]
         public JsonResult<Category> GetCategory(int id)
         {
             Category category = db.Categories.Find(id);

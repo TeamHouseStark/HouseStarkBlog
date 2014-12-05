@@ -61,6 +61,18 @@
     <Compile Include="Migrations\201412041844008_AuditInfo.Designer.cs">
       <DependentUpon>201412041844008_AuditInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412050339286_AuditInfoFix.cs" />
+    <Compile Include="Migrations\201412050339286_AuditInfoFix.Designer.cs">
+      <DependentUpon>201412050339286_AuditInfoFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412050340200_AduitInfoFixDateTime.cs" />
+    <Compile Include="Migrations\201412050340200_AduitInfoFixDateTime.Designer.cs">
+      <DependentUpon>201412050340200_AduitInfoFixDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412051234145_AuditInfoFix1.cs" />
+    <Compile Include="Migrations\201412051234145_AuditInfoFix1.Designer.cs">
+      <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +92,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412041844008_AuditInfo.resx">
       <DependentUpon>201412041844008_AuditInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412050339286_AuditInfoFix.resx">
+      <DependentUpon>201412050339286_AuditInfoFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412050340200_AduitInfoFixDateTime.resx">
+      <DependentUpon>201412050340200_AduitInfoFixDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412051234145_AuditInfoFix1.resx">
+      <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

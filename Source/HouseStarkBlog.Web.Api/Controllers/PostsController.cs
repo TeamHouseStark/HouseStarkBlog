@@ -17,13 +17,11 @@
 
     using Ninject.Infrastructure.Language;
     using System.Web.Http.Cors;
-    using System.Web.Services;
 
     [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*", SupportsCredentials = true)]
     public class PostsController : ApiController
     {
         private readonly AppDbContext db = new AppDbContext();
-        private const int TopPostsLimit = 10;
 
         // GET: api/Posts
         public JsonResult<IEnumerable<Post>> GetPosts()
