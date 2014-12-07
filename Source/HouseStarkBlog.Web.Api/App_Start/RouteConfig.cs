@@ -11,8 +11,8 @@
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("Default", "{controller}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new[] { "HouseStarkBlog.Web.Api.Controllers" });
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
+                new[] {"HouseStarkBlog.Web.Api.Controllers"});
         }
     }
 

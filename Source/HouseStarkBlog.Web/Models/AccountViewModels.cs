@@ -56,6 +56,11 @@
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(20, ErrorMessage = "The {0} length must be between {2} and {1} symbols", MinimumLength = 5)]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

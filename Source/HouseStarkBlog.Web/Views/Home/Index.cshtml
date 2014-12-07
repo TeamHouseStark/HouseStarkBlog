@@ -1,62 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <div id="posts" class="col-md-8"></div>
+
+<div>
+    <h1 class="page-header">Welcome to House Stark`s Blog</h1>
 </div>
+<div id="posts" class="col-md-12"></div>
 <script>
-    $.ajax({
-        url: 'http://localhost:6859/api/Posts/',
-        method: 'GET',
-        success: function (data) {
-            for (var index in data) {
-                var postData = data[index];
-                var post = $('<div></div>');
-                post.addClass('post');
-                var postHeader = $('<h2></h2>');
-                postHeader.text(postData.Title);
-                post.append(postHeader);
-
-                $('#posts').append(post);
-            }
-        },
-        error: function (err) {
-            console.error(err);
-        }
+    var url = app.service.url + '/Posts';
+    app.ajaxRequester.get(url).then(function (data) {
+        app.renderer.renderPosts(data, '#posts');
+    }, function(err) {
+        console.error(err);
     });
-</script>
-<button class="btn btn-default" onclick="createCategory()">Create Category</button>
-<input type="number" id="categoryId" placeholder="Category ID" />
-<input type="text" id="categoryValue" placeholder="Category Title" />
-<button class="btn btn-default" onclick="editCategory()">Edit Category</button>
-<button class="btn btn-default" onclick="deleteCategory()">Delete Category</button>
-<script>
-    function createCategory() {
-        var title = 'Category ' + new Date().getSeconds();
-        $.ajax({
-            url: 'http://localhost:6859/api/Category',
-            method: 'POST',
-            data: { Title: title }
-        });
-    }
-
-    function editCategory() {
-        var id = $('#categoryId').val();
-        var title = $('#categoryValue').val();
-
-        $.ajax({
-            url: 'http://localhost:6859/api/Category/' + id,
-            method: 'PUT',
-            data: { Id: id, Title: title }
-        });
-    }
-
-    function deleteCategory() {
-        var id = $('#categoryId').val();
-        $.ajax({
-            url: 'http://localhost:6859/api/Category/' + id,
-            method: 'DELETE'
-        });
-    }
-
 </script>

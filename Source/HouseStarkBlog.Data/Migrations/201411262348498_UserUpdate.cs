@@ -2,21 +2,22 @@ namespace HouseStarkBlog.Data.Migrations
 {
 
     using System.Data.Entity.Migrations;
-    
+
     public partial class UserUpdate : DbMigration
     {
         public override void Up()
         {
-            DropIndex("dbo.Comments", new[] { "ReplyCommentId" });
-            RenameColumn(table: "dbo.Posts", name: "AuthorId", newName: "UserId");
-            RenameIndex(table: "dbo.Posts", name: "IX_AuthorId", newName: "IX_UserId");
+            this.DropIndex("dbo.Comments", new[] {"ReplyCommentId"});
+            this.RenameColumn("dbo.Posts", "AuthorId", "UserId");
+            this.RenameIndex("dbo.Posts", "IX_AuthorId", "IX_UserId");
         }
-        
+
         public override void Down()
         {
-            DropIndex("dbo.Comments", new[] { "ReplyCommentId" });
-            RenameIndex(table: "dbo.Posts", name: "IX_UserId", newName: "IX_AuthorId");
-            RenameColumn(table: "dbo.Posts", name: "UserId", newName: "AuthorId");
+            this.DropIndex("dbo.Comments", new[] {"ReplyCommentId"});
+            this.RenameIndex("dbo.Posts", "IX_UserId", "IX_AuthorId");
+            this.RenameColumn("dbo.Posts", "UserId", "AuthorId");
         }
     }
+
 }

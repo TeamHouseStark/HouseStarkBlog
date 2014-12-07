@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201412051234145_AuditInfoFix1.Designer.cs">
       <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412070406290_TagCountRemoved.cs" />
+    <Compile Include="Migrations\201412070406290_TagCountRemoved.Designer.cs">
+      <DependentUpon>201412070406290_TagCountRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412070641509_CommentAuditInfo.cs" />
+    <Compile Include="Migrations\201412070641509_CommentAuditInfo.Designer.cs">
+      <DependentUpon>201412070641509_CommentAuditInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412051234145_AuditInfoFix1.resx">
       <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070406290_TagCountRemoved.resx">
+      <DependentUpon>201412070406290_TagCountRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070641509_CommentAuditInfo.resx">
+      <DependentUpon>201412070641509_CommentAuditInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,104 +18,134 @@
 
     using Ninject.Infrastructure.Language;
 
-    [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*", SupportsCredentials = true)]
+    using ViewModels;
+
+    [EnableCors(origins: "http://localhost:2992", headers: "*", methods: "*")]
     public class CategoryController : ApiController
     {
-        private AppDbContext db = new AppDbContext();
+        private readonly AppDbContext db = new AppDbContext();
 
         // GET: api/Category
-        public JsonResult<IEnumerable<Category>> GetCategories()
+        public JsonResult<IEnumerable<CategoryViewModel>> GetCategories()
         {
-            return Json(this.db.Categories.ToEnumerable(), new JsonSerializerSettings());
+
+            var categories = this.db.Categories.Select(c => new CategoryViewModel
+            {
+                Id = c.Id,
+                Title = c.Title
+            }).ToList();
+
+            return Json(categories.ToEnumerable(), new JsonSerializerSettings());
         }
 
         // GET: api/Category/5
-        [ResponseType(typeof(Category))]
-        public JsonResult<Category> GetCategory(int id)
+        [ResponseType(typeof (Category))]
+        public JsonResult<CategoryDetailsViewModel> GetCategory(int id)
         {
-            Category category = db.Categories.Find(id);
+            var category = this.db.Categories.FirstOrDefault(c => c.Id == id);
 
-            return Json(category, new JsonSerializerSettings());
+            if (category != null)
+            {
+                var requestedCategory = new CategoryDetailsViewModel
+                {
+                    Id = category.Id,
+                    Title = category.Title
+                };
+                if (category.Posts != null)
+                {
+                    requestedCategory.Posts = category.Posts.Select(p => new PostViewModel
+                    {
+                        Id = p.Id,
+                        Author = p.User.UserName,
+                        Category = p.Category.Title,
+                        Content = p.Content,
+                        CreatedOn = p.CreatedOn,
+                        ModifiedOn = p.ModifiedOn,
+                        Title = p.Title
+                    }).ToList();
+                }
+                return Json(requestedCategory, new JsonSerializerSettings());
+            }
+
+            return this.Json(default(CategoryDetailsViewModel), new JsonSerializerSettings());
         }
 
         // PUT: api/Category/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof (void))]
         public IHttpActionResult PutCategory(int id, Category category)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return this.BadRequest(this.ModelState);
             }
 
             if (id != category.Id)
             {
-                return BadRequest();
+                return this.BadRequest();
             }
 
-            db.Entry(category).State = EntityState.Modified;
+            this.db.Entry(category).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                this.db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!this.CategoryExists(id))
                 {
-                    return NotFound();
+                    return this.NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return this.StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Category
-        [ResponseType(typeof(Category))]
+        [ResponseType(typeof (Category))]
         public IHttpActionResult PostCategory(Category category)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return this.BadRequest(this.ModelState);
             }
 
-            db.Categories.Add(category);
-            db.SaveChanges();
+            this.db.Categories.Add(category);
+            this.db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = category.Id }, category);
+            return CreatedAtRoute("DefaultApi", new {id = category.Id}, category);
         }
 
         // DELETE: api/Category/5
-        [ResponseType(typeof(Category))]
+        [ResponseType(typeof (Category))]
         public IHttpActionResult DeleteCategory(int id)
         {
-            Category category = db.Categories.Find(id);
+            Category category = this.db.Categories.Find(id);
             if (category == null)
             {
-                return NotFound();
+                return this.NotFound();
             }
 
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            this.db.Categories.Remove(category);
+            this.db.SaveChanges();
 
-            return Ok(category);
+            return this.Ok(category);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                this.db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool CategoryExists(int id)
         {
-            return db.Categories.Count(e => e.Id == id) > 0;
+            return this.db.Categories.Count(e => e.Id == id) > 0;
         }
     }
+
 }

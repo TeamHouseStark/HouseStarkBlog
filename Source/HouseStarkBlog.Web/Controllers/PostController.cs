@@ -1,12 +1,10 @@
 ﻿namespace HouseStarkBlog.Web.Controllers
 {
-    using System.Web.Mvc;
 
-    using Data.Models;
+    using System.Web.Mvc;
 
     public class PostController : Controller
     {
-
         public ActionResult Index()
         {
             return this.View();
@@ -15,15 +13,14 @@
         // GET: Post/Details/5
         public ActionResult Details(int id)
         {
-            var post = new Post();
-            return View(post);
+            return this.View();
         }
 
         // GET: Post/Create
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         // POST: Post/Create
@@ -32,23 +29,14 @@
         [Authorize]
         public ActionResult Create(FormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return this.View();
         }
 
         // GET: Post/Edit/5
         [Authorize]
         public ActionResult Edit(int id)
         {
-            return View();
+            return this.View();
         }
 
         // POST: Post/Edit/5
@@ -57,23 +45,14 @@
         [Authorize]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return this.View();
         }
 
         // GET: Post/Delete/5
         [Authorize]
         public ActionResult Delete(int id)
         {
-            return View();
+            return this.View();
         }
 
         // POST: Post/Delete/5
@@ -82,15 +61,8 @@
         [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return this.View();
         }
     }
+
 }

@@ -3,7 +3,7 @@ namespace HouseStarkBlog.Data.Migrations
 
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HouseStarkBlog.Data.AppDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<AppDbContext>
     {
         public Configuration()
         {
@@ -11,7 +11,7 @@ namespace HouseStarkBlog.Data.Migrations
             this.AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(HouseStarkBlog.Data.AppDbContext context)
+        protected override void Seed(AppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -27,4 +27,5 @@ namespace HouseStarkBlog.Data.Migrations
             //
         }
     }
+
 }

@@ -16,8 +16,8 @@
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                "~/Scripts/modernizr-*"));
+            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            //    "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
@@ -26,6 +26,13 @@
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.superhero.css",
                 "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/q.min.js",
+                "~/Scripts/noty/jquery.noty.js",
+                "~/Scripts/app/ajax-requester.js",
+                "~/Scripts/app/renderer.js",
+                "~/Scripts/app/app.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

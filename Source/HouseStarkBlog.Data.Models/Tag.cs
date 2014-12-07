@@ -12,10 +12,11 @@
         {
             this.posts = new HashSet<Post>();
         }
+
         public virtual ICollection<Post> Posts
         {
-            get { return posts; }
-            set { posts = value; }
+            get { return this.posts; }
+            set { this.posts = value; }
         }
 
         [Key]
@@ -23,8 +24,6 @@
 
         [Required]
         public string Name { get; set; }
-
-        public int Count { get; set; }
-        
     }
+
 }

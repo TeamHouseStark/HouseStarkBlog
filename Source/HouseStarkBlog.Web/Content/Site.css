@@ -14,4 +14,42 @@
 
 input,
 select,
-textarea { max-width: 280px; }
+textarea {
+    max-width: 280px;
+}
+
+aside#categories {
+    margin-top: 7px;
+}
+
+    aside#categories h2#categories-header {
+        border-bottom: 1px solid #ebebeb;
+        margin: 42px 0 21px;
+        padding-bottom: 9.5px;
+    }
+
+
+.post {
+    padding: 0 15px 0 15px;
+    color: #df691a;
+    border: 1px solid #ebebeb;
+    -webkit-box-shadow: 1px 1px 1px #ebebeb;
+    -ms-box-shadow: 2px 2px 3px #ebebeb;
+    box-shadow: 1px 1px 1px #ebebeb;
+    margin-bottom: 35px;
+}
+
+    .post .post-info {
+        margin-top: 25px;
+        border-top: 1px solid #ebebeb;
+        padding: 15px 0;
+        color: #ebebeb;
+    }
+
+    .post .post-content {
+        color: #ebebeb;
+    }
+
+    .post .post-info .post-info-right {
+        margin-left: 15px;
+    }

@@ -3,11 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - My ASP.NET Application</title>
+        <title>@ViewBag.Title</title>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/modernizr")
-
+        @Scripts.Render("~/bundles/app")
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -30,15 +29,24 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
+        <main class="container body-content">
+            <div class="row">
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+                <aside class="col-md-3" id="categories">
+                    <h2 id="categories-header">Categories</h2>
+                    <div id="category-container"></div>
+                </aside>
+            </div>
             <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; Team Stark Blog</p>
             </footer>
-        </div>
-
+        </main>
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", false)
+        <script>
+            app.renderer.renderCategories('#category-container');
+        </script>
     </body>
 </html>

@@ -1,28 +1,29 @@
 namespace HouseStarkBlog.Data.Migrations
 {
-    using System;
+
     using System.Data.Entity.Migrations;
-    
+
     public partial class AduitInfoFixDateTime : DbMigration
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Posts", "Category_Id", "dbo.Categories");
-            DropIndex("dbo.Posts", new[] { "Category_Id" });
-            RenameColumn(table: "dbo.Posts", name: "Category_Id", newName: "CategoryId");
-            AlterColumn("dbo.Posts", "CategoryId", c => c.Int(nullable: false));
-            CreateIndex("dbo.Posts", "CategoryId");
-            AddForeignKey("dbo.Posts", "CategoryId", "dbo.Categories", "Id", cascadeDelete: true);
+            this.DropForeignKey("dbo.Posts", "Category_Id", "dbo.Categories");
+            this.DropIndex("dbo.Posts", new[] {"Category_Id"});
+            this.RenameColumn("dbo.Posts", "Category_Id", "CategoryId");
+            this.AlterColumn("dbo.Posts", "CategoryId", c => c.Int(false));
+            this.CreateIndex("dbo.Posts", "CategoryId");
+            this.AddForeignKey("dbo.Posts", "CategoryId", "dbo.Categories", "Id", true);
         }
-        
+
         public override void Down()
         {
-            DropForeignKey("dbo.Posts", "CategoryId", "dbo.Categories");
-            DropIndex("dbo.Posts", new[] { "CategoryId" });
-            AlterColumn("dbo.Posts", "CategoryId", c => c.Int());
-            RenameColumn(table: "dbo.Posts", name: "CategoryId", newName: "Category_Id");
-            CreateIndex("dbo.Posts", "Category_Id");
-            AddForeignKey("dbo.Posts", "Category_Id", "dbo.Categories", "Id");
+            this.DropForeignKey("dbo.Posts", "CategoryId", "dbo.Categories");
+            this.DropIndex("dbo.Posts", new[] {"CategoryId"});
+            this.AlterColumn("dbo.Posts", "CategoryId", c => c.Int());
+            this.RenameColumn("dbo.Posts", "CategoryId", "Category_Id");
+            this.CreateIndex("dbo.Posts", "Category_Id");
+            this.AddForeignKey("dbo.Posts", "Category_Id", "dbo.Categories", "Id");
         }
     }
+
 }
