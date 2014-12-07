@@ -46,13 +46,9 @@ app.renderer = (function() {
         postContainer.append(postContent);
         postContainer.append(postInfo);
 
-        app.ajaxRequester.get(app.service.url + '/User/' + post.UserId).then(function(data) {
-          author.text('Author: ' + data.UserName);
-          author.addClass('post-info-right');
-          postInfo.append(author);
-        }, function(err) {
-          console.error(err);
-        });
+        author.text('Author: ' + post.Author);
+        author.addClass('post-info-right');
+        postInfo.append(author);
 
         $(container).append(postContainer);
       });
@@ -81,8 +77,13 @@ app.renderer = (function() {
     $(container).text(text);
   }
 
+  function renderPostDetails(post, container) {
+    console.log(post);
+  }
+
   return {
     renderPosts: renderPosts,
+    renderPostDetails: renderPostDetails,
     renderCategories: renderCategories,
     renderMessage: renderMessage
   };

@@ -1,4 +1,21 @@
 ﻿@{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Post Details";
     Layout = "../Shared/_Layout.cshtml";
 }
+
+<div class="col-md-12">
+    <h1 class="page-header"></h1>
+</div>
+<div id="post-details" class="col-md-12"></div>
+
+<script>
+    var urlParts = location.pathname.split('/');
+    urlParts = urlParts.filter(Boolean);
+    var url = app.service.url + '/Posts/' + urlParts[2];
+    app.ajaxRequester.get(url).then(function (data) {
+        $('.page-header').text(data.Title);
+        app.renderer.renderPostDetails(data, '#post-details');
+    }, function(err) {
+        console.error(err);
+    });
+</script>
