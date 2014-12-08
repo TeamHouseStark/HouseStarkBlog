@@ -148,32 +148,11 @@ app.renderer = (function () {
       }
   }
 
-  function renderReplyForm(container) {
-      var form = $('<form></form>');
-      form.attr('id', 'reply-post-form');
-      form.addClass('form-horizontal');
-
-      var author = $('<input />');
-      author.attr('name', 'Author');
-      author.attr('placeholder', 'Author');
-      author.addClass('form-control');
-
-      var content = $('<textarea></textarea>');
-      content.attr('name', 'Content');
-      content.addClass('form-control');
-
-      form.append(author);
-      form.append(content);
-
-      $(container).append(form);
-  }
-
   return {
     renderPosts: renderPosts,
     renderPostDetails: renderPostDetails,
     renderCategories: renderCategories,
     renderMessage: renderMessage,
-    renderLatestPosts: renderLatestPosts,
-    renderReplyForm: renderReplyForm
+    renderLatestPosts: renderLatestPosts
   };
 })();

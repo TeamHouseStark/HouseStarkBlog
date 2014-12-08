@@ -18,6 +18,16 @@
     <div class="col-md-12">
         <button id="reply-post-btn" class="btn btn-sm btn-primary">Write Comment</button>
     </div>
+    <div class="col-md-12">
+        <form id="reply-form">
+            <input class="form-control" type="email" name="Author" placeholder="Email" required />
+            <textarea class="form-control" name="Content" required></textarea>
+            <button id="comment-post-btn" class="btn btn-sm btn-success">Comment</button>
+        </form>
+        <script>
+            $('#reply-form').hide();
+        </script>
+    </div>
     <div class="col-md-12" id="reply-form"></div>
     <div id="post-comments">
         <h2>Comments</h2>

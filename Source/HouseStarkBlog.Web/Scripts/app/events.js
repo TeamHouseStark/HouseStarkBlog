@@ -39,7 +39,7 @@ app.events = (function () {
   }
 
   function updatePost() {
-    console.log(location.pathname);
+    
   }
 
   function deletePost() {
@@ -48,7 +48,7 @@ app.events = (function () {
   }
 
   function replyPost() {
-    app.renderer.renderReplyForm('#reply-form');
+    $('#reply-form').toggle();
   }
 
   return {
