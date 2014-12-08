@@ -1,6 +1,7 @@
 ﻿namespace HouseStarkBlog.Web.Api
 {
 
+    using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Routing;
 
@@ -10,9 +11,16 @@
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Default", "{controller}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
-                new[] {"HouseStarkBlog.Web.Api.Controllers"});
+            routes.MapHttpRoute(
+                name: "TopPosts",
+                routeTemplate: "{controller}/Top/{limit}",
+                defaults: new { controller = "Posts", action = "TopPosts" });
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "HouseStarkBlog.Web.Api.Controllers" });
         }
     }
 

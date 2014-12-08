@@ -6,6 +6,7 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.Http.Description;
@@ -38,7 +39,8 @@
                     Title = p.Title,
                     Content = p.Content,
                     CreatedOn = p.CreatedOn,
-                    ModifiedOn = p.ModifiedOn
+                    ModifiedOn = p.ModifiedOn,
+                    Visits = p.Visits
                 });
 
             return this.Json(posts.ToEnumerable(), new JsonSerializerSettings());
@@ -74,7 +76,8 @@
                     }).ToEnumerable(),
                     Title = post.Title,
                     AuthorId = post.UserId,
-                    CategoryId = post.CategoryId
+                    CategoryId = post.CategoryId,
+                    Visits = post.Visits
                 };
 
                 // get comments` reply
@@ -102,7 +105,28 @@
             return Json(default(PostDetailsViewModel), new JsonSerializerSettings());
         }
 
-        // PUT: api/Posts/5
+        [HttpGet]
+        public JsonResult<IEnumerable<PostViewModel>> TopPosts([FromUri] int limit)
+        {
+            var posts = this.db.Posts.
+                OrderByDescending(p => p.CreatedOn).
+                Take(limit).
+                Select(p => new PostViewModel
+                {
+                    Id = p.Id,
+                    Author = p.User.UserName,
+                    Category = p.Category.Title,
+                    Title = p.Title,
+                    Content = p.Content,
+                    CreatedOn = p.CreatedOn,
+                    ModifiedOn = p.ModifiedOn,
+                    Visits = p.Visits
+                });
+
+            return this.Json(posts.ToEnumerable(), new JsonSerializerSettings());
+        }
+
+            // PUT: api/Posts/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPost(int id, Post post)
         {

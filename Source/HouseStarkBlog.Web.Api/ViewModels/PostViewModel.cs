@@ -19,5 +19,7 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public int Visits { get; set; }
+
     }
 }

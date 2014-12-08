@@ -18,11 +18,11 @@ textarea {
     max-width: 280px;
 }
 
-aside#categories {
-    margin-top: 7px;
+aside div#categories {
+    margin-top: 49px;
 }
 
-    aside#categories h2#categories-header {
+    aside div#categories h2#categories-header, h2#tags-header, h2#latest-posts-header {
         border-bottom: 1px solid #ebebeb;
         margin: 42px 0 21px;
         padding-bottom: 9.5px;
