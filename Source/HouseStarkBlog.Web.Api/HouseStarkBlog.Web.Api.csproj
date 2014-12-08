@@ -185,14 +185,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HouseStarkBlog.Common\HouseStarkBlog.Common.csproj">
-      <Project>{4a6ca737-5eab-4acc-832e-3585d8b4d8ee}</Project>
-      <Name>HouseStarkBlog.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HouseStarkBlog.Data.Common\HouseStarkBlog.Data.Common.csproj">
-      <Project>{4474618a-6a37-494f-bdc3-86bb3a3083e8}</Project>
-      <Name>HouseStarkBlog.Data.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HouseStarkBlog.Data.Models\HouseStarkBlog.Data.Models.csproj">
       <Project>{f482f778-8484-49ea-82bc-1378770db552}</Project>
       <Name>HouseStarkBlog.Data.Models</Name>

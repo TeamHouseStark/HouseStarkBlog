@@ -6,11 +6,11 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.Http.Description;
     using System.Web.Http.Results;
+    using System.Web.Mvc;
 
     using Data;
     using Data.Models;
@@ -89,7 +89,7 @@
                         var reply = comments[i].ReplyComment;
                         if (reply != null)
                         {
-                            requestedPost.Comments[i].Reply = new CommentViewModel()
+                            requestedPost.Comments[i].Reply = new CommentViewModel
                             {
                                 Author = reply.Author,
                                 Content = reply.Content,
@@ -105,7 +105,7 @@
             return Json(default(PostDetailsViewModel), new JsonSerializerSettings());
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public JsonResult<IEnumerable<PostViewModel>> TopPosts([FromUri] int limit)
         {
             var posts = this.db.Posts.

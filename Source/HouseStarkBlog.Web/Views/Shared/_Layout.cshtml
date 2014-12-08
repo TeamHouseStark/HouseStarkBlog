@@ -1,81 +1,82 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/app")
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Team House Stark", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    <form method="get" action="/Home/Search" class="navbar-form navbar-right">
-                        <div class="input-group">
-                            <input id="search" name="query" type="search" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn" type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/app")
+    <script src="~/Scripts/jquery.noty.packaged.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Team House Stark", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <form method="get" action="/Home/Search" class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input id="search" name="query" type="search" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
                         </div>
-                    </form>
-                    @Html.Partial("_LoginPartial")
-                </div>
+                    </div>
+                </form>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-        <main class="container body-content">
-            <div class="row">
-                @if(User.Identity.IsAuthenticated)
-                    {
-                        <div id="admin-panel" class="col-md-12">
-                            <div class="col-md-3">
-                                <button id="addPostBtn" class="btn btn-md btn-success">Add new post</button>
-                            </div>
-                        </div>
-                    }
-                <div class="col-md-9">
-                    @RenderBody()
+    </div>
+    <main class="container body-content">
+        <div class="row">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div id="admin-panel" class="col-md-12">
+                    <div class="col-md-3">
+                        <button id="addPostBtn" class="btn btn-md btn-success">Add new post</button>
+                    </div>
                 </div>
-                <aside class="col-md-3">
-                    <div id="categories">
-                        <h2 id="categories-header">Categories</h2>
-                        <div id="category-container"></div>
-                    </div>
-                    <div id="tags">
-                        <h2 id="tags-header">Popular Tags</h2>
-                        <div id="tags-container"></div>
-                    </div>
-                    <div id="latest-posts">
-                        <h2 id="latest-posts-header">Latest Posts</h2>
-                        <div id="latest-posts-container"></div>
-                    </div>
-                </aside>
+            }
+            <div class="col-md-9">
+                @RenderBody()
             </div>
-            <footer>
-                <p>&copy; Team Stark Blog</p>
-            </footer>
-        </main>
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", false)
-        <script>
-            app.renderer.renderCategories('#category-container');
-            app.renderer.renderLatestPosts('#latest-posts-container');
-        </script>
-    </body>
+            <aside class="col-md-3">
+                <div id="categories">
+                    <h2 id="categories-header">Categories</h2>
+                    <div id="category-container"></div>
+                </div>
+                <div id="tags">
+                    <h2 id="tags-header">Popular Tags</h2>
+                    <div id="tags-container"></div>
+                </div>
+                <div id="latest-posts">
+                    <h2 id="latest-posts-header">Latest Posts</h2>
+                    <div id="latest-posts-container"></div>
+                </div>
+            </aside>
+        </div>
+        <footer>
+            <p>&copy; Team Stark Blog</p>
+        </footer>
+    </main>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
+    <script>
+        app.renderer.renderCategories('#category-container');
+        app.renderer.renderLatestPosts('#latest-posts-container');
+    </script>
+</body>
 </html>

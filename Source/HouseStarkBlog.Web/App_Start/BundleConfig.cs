@@ -30,7 +30,6 @@
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/q.min.js",
-                "~/Scripts/noty/jquery.noty.js",
                 "~/Scripts/app/ajax-requester.js",
                 "~/Scripts/app/utils.js",
                 "~/Scripts/app/renderer.js",
