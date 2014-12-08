@@ -160,8 +160,29 @@
 
         // POST: api/Posts
         [ResponseType(typeof(Post))]
-        public IHttpActionResult PostPost(Post post)
+        public IHttpActionResult PostPost(PostTagRequest reqModel)
         {
+            var post = new Post 
+            {
+                UserId = reqModel.UserId,
+                Title = reqModel.Title,
+                Content = reqModel.Content,
+                CategoryId = reqModel.CategoryId,
+                Visits = 0
+            };
+
+            if(reqModel.Tags.Length > 0)
+            {
+                foreach(var name in reqModel.Tags) 
+                {
+                    var tag = this.db.Tags.FirstOrDefault(t => t.Name == name);
+                    if(tag != null)
+                    {
+                        post.Tags.Add(tag);
+                    }
+                }
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);

@@ -1,6 +1,7 @@
 ﻿var app = app || {};
 
-app.renderer = (function() {
+app.renderer = (function () {
+    //TODO refactor
   function renderPosts(posts, container) {
     var url = location.origin + '/Post/Details/';
     if (posts.length === 0) {
@@ -30,13 +31,13 @@ app.renderer = (function() {
 
         postInfo.addClass('post-info');
 
-        createdOn.text('Created on: ' + post.CreatedOn.split('T')[0]);
+        createdOn.text('Created On: ' + post.CreatedOn.split('T')[0]);
         //createdOn.addClass('post-info-right');
 
         postInfo.append(createdOn);
 
         if (post.ModifiedOn) {
-          modifiedOn.text('Last edit: ' + post.ModifiedOn.split('T')[0]);
+          modifiedOn.text('Edited On: ' + post.ModifiedOn.split('T')[0]);
           modifiedOn.addClass('post-info-right');
           postInfo.append(modifiedOn);
         }
@@ -53,6 +54,23 @@ app.renderer = (function() {
         $(container).append(postContainer);
       });
     }
+  }
+
+  function renderLatestPosts(container)
+  {
+      var url = app.service.url + '/Posts/Top/5';
+      app.ajaxRequester.get(url).then(function (data) {
+          data.forEach(function (post) {
+              var postTemplate = $('<h4></h4>');
+              var postLink = $('<a></a>');
+              postLink.attr('href', location.origin + '/Post/Details/' + post.Id);
+              postLink.text(post.Title.substr(0, 30) + '...');
+              postTemplate.append(postLink);
+              $(container).append(postTemplate);
+          });
+      }, function (err) {
+          console.error(err);
+      });
   }
 
   function renderCategories(container) {
@@ -78,13 +96,84 @@ app.renderer = (function() {
   }
 
   function renderPostDetails(post, container) {
-    console.log(post);
+      _renderPostInfo(post);
+      _renderPostContent(post);
+      _renderPostComments(post, '#post-comments');
+      _renderPostTags(post);
+  }
+
+  function _renderPostInfo(post) {
+      if (post['CreatedOn']) {
+          var date = app.utils.formatDate(post['CreatedOn']);
+          $('#createdOn').append(date);
+      }
+      if (post['ModifiedOn']) {
+          var modified = app.utils.formatDate(post['ModifiedOn']);
+          $('#modifiedOn').append(modified);
+      } else {
+          $('#modifiedOn').hide();
+      }
+      if (post['Author']) {
+          $('#author').append(post['Author']);
+      }
+  }
+
+  function _renderPostContent(post) {
+      $('#post-content').append(post.Content);
+  }
+
+  function _renderPostTags(post) {
+      var tagsData = post.Tags;
+      var postTags = [];
+      tagsData.forEach(function (tag) {
+          postTags.push(tag.Title);
+      });
+      var tagsString = postTags.join(', ');
+      $('#post-tags p').append(tagsString);
+  }
+
+  function _renderPostComments(post, container) {
+      var comments = post.Comments;
+      if (comments.length === 0) {
+          var message = $('<p></p>');
+          message.text('No comments available');
+          message.addClass('text-warning');
+          $(container).append(message);
+      } else {
+          comments.forEach(function (comment) {
+              var commentTemplate = $('<div></div>');
+              commentTemplate.append(comment.Content);
+              $(container + '#post-comments').append(commentTemplate);
+          });
+      }
+  }
+
+  function renderReplyForm(container) {
+      var form = $('<form></form>');
+      form.attr('id', 'reply-post-form');
+      form.addClass('form-horizontal');
+
+      var author = $('<input />');
+      author.attr('name', 'Author');
+      author.attr('placeholder', 'Author');
+      author.addClass('form-control');
+
+      var content = $('<textarea></textarea>');
+      content.attr('name', 'Content');
+      content.addClass('form-control');
+
+      form.append(author);
+      form.append(content);
+
+      $(container).append(form);
   }
 
   return {
     renderPosts: renderPosts,
     renderPostDetails: renderPostDetails,
     renderCategories: renderCategories,
-    renderMessage: renderMessage
+    renderMessage: renderMessage,
+    renderLatestPosts: renderLatestPosts,
+    renderReplyForm: renderReplyForm
   };
 })();

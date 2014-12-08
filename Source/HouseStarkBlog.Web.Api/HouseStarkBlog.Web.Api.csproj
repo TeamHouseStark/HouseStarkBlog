@@ -160,6 +160,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,6 +206,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\service.teamstark.pubxml" />
     <None Include="Properties\PublishProfiles\teamStarkAPI.pubxml" />
     <None Include="Properties\PublishProfiles\www.service-teamStark.somee.com.pubxml" />
   </ItemGroup>

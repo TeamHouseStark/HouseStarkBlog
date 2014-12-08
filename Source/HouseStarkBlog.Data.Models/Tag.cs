@@ -2,6 +2,7 @@
 {
 
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public class Tag
@@ -24,6 +25,9 @@
 
         [Required]
         public string Name { get; set; }
+
+        [DefaultValue(0)]
+        public int Count { get; set; }
     }
 
 }

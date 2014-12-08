@@ -43,13 +43,37 @@ aside div#categories {
         margin-top: 25px;
         border-top: 1px solid #ebebeb;
         padding: 15px 0;
-        color: #ebebeb;
-    }
-
-    .post .post-content {
-        color: #ebebeb;
     }
 
     .post .post-info .post-info-right {
         margin-left: 15px;
     }
+
+#post-info ul {
+    list-style: none;
+}
+
+    #post-info ul li span {
+        margin-right: 10px;
+    }
+
+#post-details #post-content {
+    margin: 25px 0;
+}
+
+#post-details #post-comments {
+    margin-top: 275px;
+}
+
+#post-details #post-tags {
+    margin-top: 50px;
+}
+
+
+#admin-panel {
+    margin-top: 25px;
+}
+
+form[id*=-post-form] * {
+    margin-bottom: 10px;
+}

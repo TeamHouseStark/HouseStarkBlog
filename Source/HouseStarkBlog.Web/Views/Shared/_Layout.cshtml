@@ -17,7 +17,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                    @Html.ActionLink("Team House Stark", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -25,7 +25,7 @@
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
-                    <form class="navbar-form navbar-right">
+                    <form method="get" action="/Home/Search" class="navbar-form navbar-right">
                         <div class="input-group">
                             <input id="search" name="query" type="search" class="form-control" placeholder="Search">
                             <div class="input-group-btn">
@@ -41,6 +41,14 @@
         </div>
         <main class="container body-content">
             <div class="row">
+                @if(User.Identity.IsAuthenticated)
+                    {
+                        <div id="admin-panel" class="col-md-12">
+                            <div class="col-md-3">
+                                <button id="addPostBtn" class="btn btn-md btn-success">Add new post</button>
+                            </div>
+                        </div>
+                    }
                 <div class="col-md-9">
                     @RenderBody()
                 </div>
@@ -67,6 +75,7 @@
         @RenderSection("scripts", false)
         <script>
             app.renderer.renderCategories('#category-container');
+            app.renderer.renderLatestPosts('#latest-posts-container');
         </script>
     </body>
 </html>

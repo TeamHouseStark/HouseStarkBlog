@@ -62,7 +62,7 @@
                         CreatedOn = p.CreatedOn,
                         ModifiedOn = p.ModifiedOn,
                         Title = p.Title
-                    }).ToList();
+                    }).OrderByDescending(p => p.CreatedOn).ToList();
                 }
                 return Json(requestedCategory, new JsonSerializerSettings());
             }

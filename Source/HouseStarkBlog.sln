@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{9F8A7473-2B1B-4D52-B360-0B10EC0C06B5}"
@@ -20,6 +18,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseStarkBlog.Data.Common", "HouseStarkBlog.Data.Common\HouseStarkBlog.Data.Common.csproj", "{4474618A-6A37-494F-BDC3-86BB3A3083E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseStarkBlog.Web.Api", "HouseStarkBlog.Web.Api\HouseStarkBlog.Web.Api.csproj", "{8FCABC2B-85B0-45D7-AE86-B7CA4BDB4343}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F844E68-5A66-47A2-86DF-9F09ADD0377A}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,8 +61,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C8E16FAE-2F23-473D-B0DA-9143342B0B3C} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
 		{F482F778-8484-49EA-82BC-1378770DB552} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
-		{CC33254E-6986-4A75-89CD-DBE325464AE1} = {42BF6180-24F8-492F-A10A-BBB1193631B5}
 		{4474618A-6A37-494F-BDC3-86BB3A3083E8} = {22E0429D-1FC5-4882-B80D-2E2E27CAA3EF}
+		{CC33254E-6986-4A75-89CD-DBE325464AE1} = {42BF6180-24F8-492F-A10A-BBB1193631B5}
 		{8FCABC2B-85B0-45D7-AE86-B7CA4BDB4343} = {42BF6180-24F8-492F-A10A-BBB1193631B5}
 	EndGlobalSection
 EndGlobal

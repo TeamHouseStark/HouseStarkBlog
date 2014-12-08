@@ -85,7 +85,12 @@
     <Compile Include="Migrations\201412071747414_PostVisitsCounter.Designer.cs">
       <DependentUpon>201412071747414_PostVisitsCounter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412081022592_TagCounter.cs" />
+    <Compile Include="Migrations\201412081022592_TagCounter.Designer.cs">
+      <DependentUpon>201412081022592_TagCounter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PostTagRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412071747414_PostVisitsCounter.resx">
       <DependentUpon>201412071747414_PostVisitsCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081022592_TagCounter.resx">
+      <DependentUpon>201412081022592_TagCounter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

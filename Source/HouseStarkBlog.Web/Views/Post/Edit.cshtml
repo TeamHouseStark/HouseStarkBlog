@@ -1,6 +1,24 @@
-﻿@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Edit Post";
+    Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+
+<div class="col-md-12">
+    <h1 class="page-header">Edit Post</h1>
+</div>
+<div class="col-md-12">
+    <form id="edit-post-form">
+        <input type="hidden" name="UserId" value="@User.Identity.GetUserId()" />
+        <input type="text" class="form-control" name="Title" id="post-title" placeholder="Title">
+        <textarea class="form-control" name="Content" id="post-content" placeholder="Content"></textarea>
+        <select id="post-category" name="CategoryId" class="form-control"></select>
+        <input name="Tags" type="text" class="form-control" id="post-tags" />
+        <button id="update-post-btn" type="button" class="btn btn-md btn-success"><span class="fa fa-send"></span> Edit Post</button>
+    </form>
+</div>
+<script>
+    app.utils.loadOptions(app.service.url + '/Category', 'Title', 'Id', '#post-category');
+    //app.utils.loadFormData();
+</script>

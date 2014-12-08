@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@{
     ViewBag.Title = "Post Details";
     Layout = "../Shared/_Layout.cshtml";
 }
@@ -6,8 +7,33 @@
 <div class="col-md-12">
     <h1 class="page-header"></h1>
 </div>
-<div id="post-details" class="col-md-12"></div>
-
+<section id="post-details" class="col-md-12">
+    <header id="post-info">
+        <ul>
+            <li id="createdOn" class="col-md-4"><span class="fa fa-calendar"></span> Created On: </li>
+            <li id="modifiedOn" class="col-md-4"><span class="fa fa-calendar"></span> Edited On: </li>
+            <li id="author" class="col-md-4"><span class="fa fa-user"></span> Author: </li>
+        </ul>
+    </header>
+    <div id="post-content" class="col-md-12"></div>
+    <div class="col-md-12">
+        <button id="reply-post-btn" class="btn btn-sm btn-primary">Write Comment</button>
+    </div>
+    <div class="col-md-12" id="reply-form"></div>
+    <div id="post-comments">
+        <h2>Comments</h2>
+    </div>
+    <footer id="post-tags" class="col-md-12">
+        <p><strong>Tags: </strong></p>
+    </footer>
+</section>
+@if(User.Identity.IsAuthenticated)
+{
+    <div class="col-md-12">
+        <button id="edit-post-btn" class="btn btn-md btn-warning"><span class="fa fa-edit"></span> Edit</button>
+        <button id="delete-post-btn" class="btn btn-md btn-danger"><span class="fa fa-trash"></span> Delete</button>
+    </div>
+}
 <script>
     var urlParts = location.pathname.split('/');
     urlParts = urlParts.filter(Boolean);

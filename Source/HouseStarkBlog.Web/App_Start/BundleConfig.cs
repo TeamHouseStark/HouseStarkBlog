@@ -24,14 +24,17 @@
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.superhero.css",
+                "~/Content/bootstrap.theme.css",
+                "~/Content/font-awesome.css",
                 "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/q.min.js",
                 "~/Scripts/noty/jquery.noty.js",
                 "~/Scripts/app/ajax-requester.js",
+                "~/Scripts/app/utils.js",
                 "~/Scripts/app/renderer.js",
+                "~/Scripts/app/events.js",
                 "~/Scripts/app/app.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,

@@ -8,4 +8,14 @@
       url: baseUrl
     };
   })();
+
+  $(function assignEvents() {
+      $('#addPostBtn').click(app.events.addPost);
+      $('#create-post-button').click(app.events.createPost);
+      $('#edit-post-btn').click(app.events.editPost);
+      $('#delete-post-btn').click(app.events.deletePost);
+      $('#update-post-btn').click(app.events.updatePost);
+      $('#reply-post-btn').click(app.events.replyPost);
+  });
+
 })();
