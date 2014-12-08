@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <h1 class="page-header"></h1>
+</div>
+<div id="posts" class="col-md-12"></div>
+<script>
+    var locationParts = location.pathname.split('/');
+    locationParts = locationParts.filter(Boolean);
+    var url = app.service.url + '/' + locationParts[0] + '/' + locationParts[2];
+    app.ajaxRequester.get(url).then(function(data) {
+        app.renderer.renderMessage('Posts for category ' + data.Title, '.page-header');
+        app.renderer.renderPosts(data.Posts, '#posts');
+    }, function(err) {
+        console.error(err);
+    });
+</script>

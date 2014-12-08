@@ -1,17 +1,79 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    padding-top: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+aside div#categories {
+    margin-top: 49px;
+}
+
+    aside div#categories h2#categories-header, h2#tags-header, h2#latest-posts-header {
+        border-bottom: 1px solid #ebebeb;
+        margin: 42px 0 21px;
+        padding-bottom: 9.5px;
+    }
+
+
+.post {
+    padding: 0 15px 0 15px;
+    color: #df691a;
+    border: 1px solid #ebebeb;
+    -webkit-box-shadow: 1px 1px 1px #ebebeb;
+    -ms-box-shadow: 2px 2px 3px #ebebeb;
+    box-shadow: 1px 1px 1px #ebebeb;
+    margin-bottom: 35px;
+}
+
+    .post .post-info {
+        margin-top: 25px;
+        border-top: 1px solid #ebebeb;
+        padding: 15px 0;
+    }
+
+    .post .post-info .post-info-right {
+        margin-left: 15px;
+    }
+
+#post-info ul {
+    list-style: none;
+}
+
+    #post-info ul li span {
+        margin-right: 10px;
+    }
+
+#post-details #post-content {
+    margin: 25px 0;
+}
+
+#post-details #post-comments {
+    margin-top: 275px;
+}
+
+#post-details #post-tags {
+    margin-top: 50px;
+}
+
+
+#admin-panel {
+    margin-top: 25px;
+}
+
+form[id*=-post-form] * {
+    margin-bottom: 10px;
 }

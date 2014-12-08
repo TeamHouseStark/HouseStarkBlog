@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Create Post";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <h1 class="page-header">Create Post</h1>
+</div>
+<div class="col-md-12">
+    <form id="create-post-form">
+        <input type="hidden" name="UserId" value="@User.Identity.GetUserId()" />
+        <input type="text" class="form-control" name="Title" id="post-title" placeholder="Title">
+        <textarea class="form-control" name="Content" id="post-content" placeholder="Content"></textarea>
+        <select id="post-category" name="CategoryId" class="form-control"></select>
+        <input name="Tags" type="text" class="form-control" id="post-tags" />
+        <button id="create-post-button" type="button" class="btn btn-md btn-success"><span class="fa fa-send"></span> Create Post</button>
+    </form>
+</div>
+<script>
+    app.utils.loadOptions(app.service.url + '/Category', 'Title', 'Id', '#post-category');
+</script>

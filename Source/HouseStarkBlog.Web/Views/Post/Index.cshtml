@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<div id="posts"></div>
+<script>
+    $.ajax({
+        url: 'http://localhost:6859/api/Posts/',
+        method: 'GET',
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(err) {
+            console.error(err);
+        }
+    });
+</script>

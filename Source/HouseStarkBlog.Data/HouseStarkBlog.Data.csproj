@@ -53,6 +53,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="Migrations\201411262348498_UserUpdate.cs" />
+    <Compile Include="Migrations\201411262348498_UserUpdate.Designer.cs">
+      <DependentUpon>201411262348498_UserUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412041844008_AuditInfo.cs" />
+    <Compile Include="Migrations\201412041844008_AuditInfo.Designer.cs">
+      <DependentUpon>201412041844008_AuditInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412050339286_AuditInfoFix.cs" />
+    <Compile Include="Migrations\201412050339286_AuditInfoFix.Designer.cs">
+      <DependentUpon>201412050339286_AuditInfoFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412050340200_AduitInfoFixDateTime.cs" />
+    <Compile Include="Migrations\201412050340200_AduitInfoFixDateTime.Designer.cs">
+      <DependentUpon>201412050340200_AduitInfoFixDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412051234145_AuditInfoFix1.cs" />
+    <Compile Include="Migrations\201412051234145_AuditInfoFix1.Designer.cs">
+      <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412070406290_TagCountRemoved.cs" />
+    <Compile Include="Migrations\201412070406290_TagCountRemoved.Designer.cs">
+      <DependentUpon>201412070406290_TagCountRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412070641509_CommentAuditInfo.cs" />
+    <Compile Include="Migrations\201412070641509_CommentAuditInfo.Designer.cs">
+      <DependentUpon>201412070641509_CommentAuditInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412071747414_PostVisitsCounter.cs" />
+    <Compile Include="Migrations\201412071747414_PostVisitsCounter.Designer.cs">
+      <DependentUpon>201412071747414_PostVisitsCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412081022592_TagCounter.cs" />
+    <Compile Include="Migrations\201412081022592_TagCounter.Designer.cs">
+      <DependentUpon>201412081022592_TagCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PostTagRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +102,35 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411262348498_UserUpdate.resx">
+      <DependentUpon>201411262348498_UserUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412041844008_AuditInfo.resx">
+      <DependentUpon>201412041844008_AuditInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412050339286_AuditInfoFix.resx">
+      <DependentUpon>201412050339286_AuditInfoFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412050340200_AduitInfoFixDateTime.resx">
+      <DependentUpon>201412050340200_AduitInfoFixDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412051234145_AuditInfoFix1.resx">
+      <DependentUpon>201412051234145_AuditInfoFix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070406290_TagCountRemoved.resx">
+      <DependentUpon>201412070406290_TagCountRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070641509_CommentAuditInfo.resx">
+      <DependentUpon>201412070641509_CommentAuditInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412071747414_PostVisitsCounter.resx">
+      <DependentUpon>201412071747414_PostVisitsCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412081022592_TagCounter.resx">
+      <DependentUpon>201412081022592_TagCounter.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

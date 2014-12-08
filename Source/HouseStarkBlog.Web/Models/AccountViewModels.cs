@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace HouseStarkBlog.Web.Models
+﻿namespace HouseStarkBlog.Web.Models
 {
+
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -13,6 +14,7 @@ namespace HouseStarkBlog.Web.Models
     public class ExternalLoginListViewModel
     {
         public string Action { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 
@@ -38,9 +40,8 @@ namespace HouseStarkBlog.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -53,6 +54,11 @@ namespace HouseStarkBlog.Web.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [StringLength(20, ErrorMessage = "The {0} length must be between {2} and {1} symbols", MinimumLength = 5)]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -98,4 +104,5 @@ namespace HouseStarkBlog.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
 }
