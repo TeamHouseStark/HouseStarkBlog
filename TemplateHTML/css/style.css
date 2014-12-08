@@ -1,4 +1,23 @@
-﻿.jumbotron{
+/** CSS Reset **/
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font-family: inherit; vertical-align: baseline; } article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: none; } table { border-collapse: collapse; border-spacing: 0; }
+
+
+/** BASIC CSS **/
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.navbar {
+    padding: 10px 0;
+}
+
+.navbar .navbar-form navbar-right {
+    padding: 5px 16px;
+}
+
+.jumbotron{
     margin: 20px;
     border-radius: 10px;
     padding: 5px 20px 5px 20px;
@@ -8,3 +27,117 @@
     margin-left: 154px;
 }
 
+
+/** Post Styles **/
+.post,
+.post-comments,
+.post-leave-comment {
+    background-color: #4E5D6C;
+    padding: 20px;
+}
+
+.post {
+    margin: 0 0 35px;
+}
+
+.post h3 {
+    margin-top: 0;
+}
+
+.post p {
+    line-height: 22px;
+}
+
+.post a.read-more {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+.post a span.glyphicon {
+    padding: 0 0 0 5px;
+}
+
+.post .post-meta {
+    margin: 0 0 13px 0;
+}
+
+.single-post p {
+    margin: 0 0 15px 0;
+}
+
+.post-comment-meta span.glyphicon,
+.post .post-meta span.glyphicon {
+    margin: 0 5px 0 0;
+}
+
+.post-comment-meta span,
+.post .post-meta span {
+    margin: 0 10px 0 0;
+}
+
+.post-comments {
+    margin-bottom: 35px;
+}
+
+.post-comments h3,
+.post-leave-comment h3 {
+    margin: 0 0 25px 0;
+}
+
+.post-comment {
+    margin: 0 0 20px 0;
+    padding: 0 0 20px;
+}
+
+.post-comment p {
+    padding: 10px 0 0 20px;
+    line-height: 18px;
+}
+
+.post-comments div.post-comment {
+    border-bottom: 1px dashed #ddd;
+}
+
+.post-comments div.post-comment:last-of-type {
+    border: 0 none;
+}
+
+.post-leave-comment input[type="text"],
+.post-leave-comment textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 7px 7px;
+}
+
+.post-leave-comment {
+    margin: 0 0 35px 0;
+}
+
+/** Sidebar Styles **/
+.sidebar-box, .tags {
+    background-color: #4E5D6C;
+    padding: 20px;
+    margin: 0 0 35px 0;
+}
+
+.sidebar-box ul li {
+    margin: 10px 0;
+}
+
+.sidebar-box ul li a {
+    padding: 0 0 2px 0;
+    border-bottom: 1px dotted #df691a;
+    display: block;
+}
+
+.sidebar-box ul li a:hover {
+    text-decoration: none;
+}
+
+.tags a {
+    margin-left: 5px;
+}
+
+.tags a:first-child {
+    margin-left: 0;
+}

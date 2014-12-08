@@ -1,88 +1,199 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Blog</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="jQuery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="bs-component">
-    <div class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Build Materials</a>
-            </div>
-            <div class="navbar-collapse navbar-responsive-collapse collapse" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">AnotherLink</a></li>
-                    <li><a href="#">Another Link</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control col-lg-8" placeholder="Search">
-                </form>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Blog</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <script src="jQuery/jquery-2.1.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="bs-component">
+            <div class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Build Materials</a>
+                    </div>
+                    <div class="navbar-collapse navbar-responsive-collapse collapse" aria-expanded="false" style="height: 1px;">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!--End of navbar and start of sign-up form body-->
-<div class="bs-component col-lg-8" id="articles-wrapper">
-    <div class="jumbotron col-lg-12">
-        <a href=""><h2>Post header</h2></a>
-        <span class="glyphicon glyphicon-user"></span>
-        <a href="#">Username</a>
-        <span class="glyphicon glyphicon-time"></span>
-        <!--Should get the current date and display it-->
-        <span>01/01/2000</span>
-        <span class="glyphicon glyphicon-tag"></span>
-        <a href="#">Category</a>
-        <hr/>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam turpis leo, tincidunt sed mollis viverra, commodo ac dolor. Donec at odio ullamcorper erat viverra tincidunt id et nulla. Ut quis nisl diam. Mauris sit amet velit non leo ultrices pellentesque. Mauris facilisis libero in nisi feugiat blandit ac sagittis leo. Suspendisse vel risus hendrerit velit laoreet condimentum sed a orci. Proin id odio mi. Mauris augue sem, euismod et tristique scelerisque, fermentum viverra sem. In vitae ligula ac lectus finibus cursus ac at turpis.</p>
-        <p><a class="btn btn-primary btn">Answer</a></p>
-    </div>
-    <div class="jumbotron col-lg-12">
-        <span class="glyphicon glyphicon-user"></span>
-        <a href="#">Username</a>
-        <span class="glyphicon glyphicon-time"></span>
-        <!--Should get the current date and display it-->
-        <span>01/01/2000</span>
-        <span class="glyphicon glyphicon-tag"></span>
-        <a href="#">Category</a>
-        <hr/>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam turpis leo, tincidunt sed mollis viverra, commodo ac dolor. Donec at odio ullamcorper erat viverra tincidunt id et nulla. Ut quis nisl diam. Mauris sit amet velit non leo ultrices pellentesque. Mauris facilisis libero in nisi feugiat blandit ac sagittis leo. Suspendisse vel risus hendrerit velit laoreet condimentum sed a orci. Proin id odio mi. Mauris augue sem, euismod et tristique scelerisque, fermentum viverra sem. In vitae ligula ac lectus finibus cursus ac at turpis.
 
-            Mauris elementum mauris urna, id tincidunt est lacinia at. Donec sed lorem at sapien aliquam laoreet rutrum vitae tellus. Donec fringilla volutpat quam quis molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer aliquam odio at posuere vehicula. Proin sit amet turpis vitae sapien sodales faucibus. Mauris lobortis ullamcorper eros, eget aliquet risus aliquam a. Cras luctus magna erat, non dapibus ligula faucibus eget. Curabitur tincidunt rutrum consequat. Vestibulum metus odio, viverra vel iaculis quis, luctus ac elit. In scelerisque tincidunt lorem, vel pulvinar lacus efficitur at. Suspendisse sapien dui, laoreet quis auctor ut, blandit id sapien. Curabitur nec diam purus.
+        <section class="container">
+            <div class="row">
 
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eleifend maximus lectus non elementum. In cursus, tortor a molestie congue, arcu turpis mattis magna, quis interdum est ligula non nisi. Pellentesque non ligula eget tellus tristique maximus in quis sem. Sed ultrices ultrices urna. Nunc ac justo ut libero dignissim tristique. Sed aliquet urna nunc, in tempor nunc sodales tempor. Praesent vulputate dolor lectus, at tristique ex facilisis quis. Vestibulum mattis mattis lectus, sit amet posuere velit finibus vitae. In sit amet tellus non libero lacinia fermentum. Donec sed vehicula dolor.</p>
-        <p><a class="btn btn-primary btn">Answer</a></p>
-    </div>
-</div>
-<div>
-    <div class="jumbotron col-lg-2 sidebar-item">
-        <h2>Post header</h2>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-    </div>
-    <div class="jumbotron col-lg-2 sidebar-item">
-        <h2>Post header</h2>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-        <p>Sample post 1dsadasd</p>
-    </div>
-</div>
-</body>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+
+                    <article class="post clearfix single-post">
+
+                        <h3>Lorem ipsum dolor sit amet, consectetur</h3>
+                        <div class="post-meta">
+                            <span>
+                                <span class="glyphicon glyphicon-time"></span>
+                                04.12.2014, 22:00
+                            </span>
+                            <span>
+                                <span class="glyphicon glyphicon-user"></span>
+                                <a href="">Admin</a>
+                            </span>
+                            <span>
+                                <span class="glyphicon glyphicon-tag"></span>
+                                Category
+                            </span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                            id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                            id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                            id est laborum.</p>
+
+                    </article>
+
+                    <div class="post-comments">
+
+                        <div class="post-comment clearfix">
+
+                            <h3>Comments (2)</h3>
+
+                            <div class="post-comment-meta">
+                                <span>
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    04.12.2014, 22:00
+                                </span>
+                                <span>
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <a href="">Admin</a>
+                                </span>
+                            </div>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        </div>
+
+                        <div class="post-comment clearfix">
+
+                            <div class="post-comment-meta">
+                                <span>
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    04.12.2014, 22:00
+                                </span>
+                                <span>
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <a href="">Admin</a>
+                                </span>
+                            </div>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="post-leave-comment clearfix">
+
+                        <h3>Leave Comment</h3>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <input type="text" name="" value="" placeholder="Name*" />
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <input type="text" name="" value="" placeholder="E-mail*" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <textarea placeholder="Comment*"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input class="btn btn-primary pull-right" type="submit" name="" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
+
+                    <div class="sidebar-box clearfix">
+
+                        <form class="">
+                            <input type="text" class="form-control col-lg-8" placeholder="Search">
+                        </form>
+
+                    </div>
+
+                    <div class="sidebar-box">
+
+                        <h4>Category</h4>
+                        <ul>
+                            <li>
+                                <a href="">HTML</a>
+                            </li>
+                            <li>
+                                <a href="">CSS</a>
+                            </li>
+                            <li>
+                                <a href="">JavaScript</a>
+                            </li>
+                            <li>
+                                <a href="">C#</a>
+                            </li>
+                            <li>
+                                <a href="">.Net</a>
+                            </li>
+                            <li>
+                                <a href="">WordPress</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="tags">
+
+                        <h4>Tags</h4>
+                        <p><a href="">PHP</a>,<a href="">Java</a>,<a href="">Laravel</a>,<a href="">Joomla</a>,<a href="">AJAX</a></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+    </body>
 </html>
